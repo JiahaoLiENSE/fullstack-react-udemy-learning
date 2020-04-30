@@ -5,6 +5,11 @@ import Avatar from '../../shared/components/UIElements/Avatar';
 import Card from '../../shared/components/UIElements/Card';
 import './UserItem.css';
 
+/* 
+    User info display area
+    Card tag for card style - from Card.js
+    Avatar tag contains image and name - from Avatar.js
+ */
 const UserItem = props => {
   return (
     <li className="user-item">

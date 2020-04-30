@@ -4,6 +4,11 @@ import { CSSTransition } from 'react-transition-group';
 
 import './SideDrawer.css';
 
+/* 
+    Side bar display
+    CSSTransition: CSSTransition applies a pair of class names during the appear , enter , and exit states of the transition.
+    Portal: ReactDOM.createPortal(child, container); Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+ */
 const SideDrawer = props => {
   const content = (
     <CSSTransition

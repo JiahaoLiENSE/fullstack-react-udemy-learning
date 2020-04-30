@@ -7,6 +7,13 @@ import SideDrawer from './SideDrawer';
 import Backdrop from '../UIElements/Backdrop';
 import './MainNavigation.css';
 
+/* 
+  Main navigation bar content display
+  useState controls: drawerIsOpen, setDrawerOpen
+  When onClick moblie nav, header navgiation bar shows; when onClick background(Backdrop.js) or SideDrawer, header navigation closes
+  <React.Fragment>: handle multiple components
+  <SideDrawer>: moblie side bar nav
+ */
 const MainNavigation = props => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 

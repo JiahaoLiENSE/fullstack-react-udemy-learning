@@ -2,6 +2,9 @@ import React from 'react';
 
 import './MainHeader.css';
 
+/* 
+    Header display
+ */
 const MainHeader = props => {
     return <header className="main-header">
         {props.children}
