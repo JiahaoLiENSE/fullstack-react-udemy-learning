@@ -2,6 +2,9 @@ import React from 'react';
 
 import PlaceList from '../components/PlaceList';
 
+/* 
+    User places constant data
+ */
 const DUMMY_PLACES = [
   {
     id: 'p1',

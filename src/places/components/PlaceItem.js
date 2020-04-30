@@ -2,7 +2,10 @@ import React from 'react';
 
 import Card from '../../shared/components/UIElements/Card';
 import './PlaceItem.css';
-
+/* 
+  Place detail info display area
+  Card container style.
+ */
 const PlaceItem = props => {
   return (
     <li className="place-item">

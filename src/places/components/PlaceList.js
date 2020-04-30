@@ -4,6 +4,12 @@ import Card from '../../shared/components/UIElements/Card';
 import PlaceItem from './PlaceItem';
 import './PlaceList.css';
 
+/* 
+  User info passing data
+  Check if user exit
+  Initialize variables and pass them into PlaceItem
+  map(): data collection method that generate unique key and values should match the key
+ */
 const PlaceList = props => {
   if (props.items.length === 0) {
     return (
