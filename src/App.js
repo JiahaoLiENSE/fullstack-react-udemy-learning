@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch, } from 'react-router-
 
 import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
+import UserPlaces from './places/pages/UserPlaces';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 // read all router dom url contents set up: npm install --save react-router-dom
 
@@ -21,6 +22,9 @@ const App = () => {
           <Route path="/" exact={true}>
             <Users />
           </Route>
+          <Route path="/:userId/places" exact>
+            <UserPlaces />
+          </Route>
           <Route path="/places/new" exact>
             <NewPlace />
           </Route>
@@ -30,6 +34,6 @@ const App = () => {
       </main>
     </Router>
   );
-}
+};
 
 export default App;
