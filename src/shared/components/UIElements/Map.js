@@ -2,6 +2,14 @@ import React, { useRef, useEffect } from 'react';
      
 import './Map.css';
  
+/* 
+    Map function(OpenStreetMap - free map api)
+    useRef: is nice as you can set references directly in your function components.
+    useEffect: you tell React that your component needs to do something after render. 
+                React will remember the function you passed (we’ll refer to it as our “effect”), 
+                and call it later after performing the DOM updates.
+                reference(https://reactjs.org/docs/hooks-effect.html)
+ */
 const Map = props => {
   const mapRef = useRef();
   
@@ -33,3 +41,29 @@ const Map = props => {
 };
  
 export default Map;
+
+// Google Map API reference
+/* 
+  const Map = props => {
+  const mapRef = useRef();
+  
+  const { center, zoom } = props;
+
+  useEffect(() => {
+    const map = new window.google.maps.Map(mapRef.current, {
+      center: center,
+      zoom: zoom
+    });
+  
+    new window.google.maps.Marker({ position: center, map: map });
+  }, [center, zoom]);  
+
+  return (
+    <div
+      ref={mapRef}
+      className={`map ${props.className}`}
+      style={props.style}
+    ></div>
+  );
+};
+ */

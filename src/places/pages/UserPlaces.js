@@ -10,25 +10,25 @@ import PlaceList from '../components/PlaceList';
 const DUMMY_PLACES = [
   {
     id: 'p1',
-    title: 'Empire State Building',
-    description: 'One of the most famous sky scrapers in the world!',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg',
-    address: '20 W 34th St, New York, NY 10001',
+    title: 'Toronto Niagara Falls',
+    description: 'One of the most famous falls in the world!',
+    imageUrl: 'https://www.niagarafallstourism.com/site/assets/files/1/shutterstock_373218787_hornblower_rainbow.jpg',
+    address: '6815 Stanley Ave, Niagara Falls, ON L2G 3Y9',
     location: {
-      lat: 40.7484405,
-      lng: -73.9878584
+      lat: 43.054098,
+      lng: -79.2281189
     },
     creator: 'u1'
   },
   {
     id: 'p2',
-    title: 'Empire State Building',
-    description: 'One of the most famous sky scrapers in the world!',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg',
-    address: '20 W 34th St, New York, NY 10001',
+    title: 'University of Regina',
+    description: 'My Canadian University',
+    imageUrl: 'https://uarctic.vps02.fwstatic.download/media/1261920/uregina-profile-11.jpg?anchor=center&mode=crop&width=1020&height=638&slimmage=true&bgcolor=fff&format=jpg&rnd=130873106210000000',
+    address: '3737 Wascana Pkwy, Regina, SK S4S 0A2',
     location: {
-      lat: 40.7484405,
-      lng: -73.9878584
+      lat: 50.4154576,
+      lng: -104.5900189
     },
     creator: 'u2'
   }
