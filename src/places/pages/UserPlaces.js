@@ -1,9 +1,11 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import PlaceList from '../components/PlaceList';
 
 /* 
     User places constant data
+    useParams: make route id match the creator and display only related creator place
  */
 const DUMMY_PLACES = [
   {
@@ -34,7 +36,10 @@ const DUMMY_PLACES = [
 
 const UserPlaces = () => {
 
-  return <PlaceList items={DUMMY_PLACES} />;
+    const userId = useParams().userId;
+    const loadedPlaces = DUMMY_PLACES.filter(place => place.creator === userId);
+
+    return <PlaceList items={loadedPlaces} />;
 };
 
 export default UserPlaces;
