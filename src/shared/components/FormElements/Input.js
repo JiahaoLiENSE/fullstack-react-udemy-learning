@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 
 import { validate } from '../../util/Validators';
 import './Input.css';
@@ -41,6 +41,18 @@ const Input = props => {
     isTouched: false,
     isValid: false
   });
+
+// static constants
+const { id, onInput } = props;
+const { value, isValid } = inputState;
+/*
+  useEffect: Effect hook lets you perform side effects in function component;
+              similar to componentDidMount and componentDidUpdate;
+              parameters with indicators.
+*/
+useEffect(() => {
+  onInput(id, value, isValid)
+}, [id, value, isValid, onInput]);
 
   // Two attributes for handler.
   // event.target.value: get user input value.
