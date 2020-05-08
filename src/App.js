@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch, } from 'react-router-
 import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
 import UserPlaces from './places/pages/UserPlaces';
+import UpdatePlace from '../src/places/pages/UpdatePlace';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 // read all router dom url contents set up: npm install --save react-router-dom
 
@@ -27,6 +28,9 @@ const App = () => {
           </Route>
           <Route path="/places/new" exact>
             <NewPlace />
+          </Route>
+          <Route path="/places/:placeId" exact>
+            <UpdatePlace />
           </Route>
           {/* If the route path is not '/', then redirect to '/' */}
           <Redirect to="/"></Redirect>

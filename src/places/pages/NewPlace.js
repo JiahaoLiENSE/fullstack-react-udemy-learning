@@ -1,77 +1,36 @@
-import React, { useCallback , useReducer } from 'react';
+import React from 'react';
 
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH} from '../../shared/util/Validators';
-import './NewPlace.css';
+import { useForm } from '../../shared/hooks/form-hook';
+import './PlaceForm.css';
 
 /* 
     New place info display area
  */
 
- /*
-    input container
-    add validator: required.
-    check all form title with id, if current id is same, check validation; if not the samw, change into same id then check.
- */
- const formReducer = (state, action) => {
-  switch (action.type) {
-    case 'INPUT_CHANGE':
-      let formIsValid = true;
-      for (const inputId in state.inputs) {
-        if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid;
-        } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid;
-        }
-      }
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid }
-        },
-        isValid: formIsValid
-      };
-    default:
-      return state;
-  }
-};
-
 // define title and description field empty, and default validation is false.
 const NewPlace = () => {
-  const [formState, dispatch] = useReducer(formReducer, {
-    inputs: {
-      title: {
-        value: '',
-        isValid: false
-      },
-      description: {
-        value: '',
-        isValid: false
-      }
+  const [formState, inputHandler] = useForm(
+    {
+    title: {
+      value: '',
+      isValid: false
     },
-    isValid: false
-  });
+    description: {
+      value: '',
+      isValid: false
+    }
+  }, false);
 
-  /* useCallback: useCallback will return a memoized version of the callback that only changes 
-                  if one of the dependencies has changed. This is useful when passing callbacks to 
-                  optimized child components that rely on reference equality to prevent unnecessary renders 
-                  (e.g. shouldComponentUpdate).
-    variables: input value, isValue, id.
-    make dynamic id content.
-  */
-  const inputHandler = useCallback((id, value, isValid) => {
-    dispatch({
-      type: 'INPUT_CHANGE',
-      value: value,
-      isValid: isValid,
-      inputId: id
-    });
-  }, []);
+  const placeSubmitHandler = event => {
+    event.preventDefault();
+    console.log(formState.inputs);
+  }
 
   return (
-    <form className="place-form">
+    <form className="place-form" onSubmit={placeSubmitHandler}>
       <Input
         id="title"
         element="input"
@@ -87,6 +46,14 @@ const NewPlace = () => {
         label="Description"
         validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="Please enter a valid description (at least 5 characters)."
+        onInput={inputHandler}
+      />
+      <Input
+        id="address"
+        element="input"
+        label="Address"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid address."
         onInput={inputHandler}
       />
       <Button type="submit" disabled={!formState.isValid}>
