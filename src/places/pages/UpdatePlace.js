@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
+import Card from '../../shared/components/UIElements/Card';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
@@ -11,68 +12,95 @@ import { useForm } from '../../shared/hooks/form-hook';
 import './PlaceForm.css';
 
 const DUMMY_PLACES = [
-  {
-    id: 'p1',
-    title: 'Empire State Building',
-    description: 'One of the most famous sky scrapers in the world!',
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg',
-    address: '20 W 34th St, New York, NY 10001',
-    location: {
-      lat: 40.7484405,
-      lng: -73.9878584
+    {
+      id: 'p1',
+      title: 'Toronto Niagara Falls',
+      description: 'One of the most famous falls in the world!',
+      imageUrl: 'https://www.niagarafallstourism.com/site/assets/files/1/shutterstock_373218787_hornblower_rainbow.jpg',
+      address: '6815 Stanley Ave, Niagara Falls, ON L2G 3Y9',
+      location: {
+        lat: 43.054098,
+        lng: -79.2281189
+      },
+      creator: 'u1'
     },
-    creator: 'u1'
-  },
-  {
-    id: 'p2',
-    title: 'Empire State Building',
-    description: 'One of the most famous sky scrapers in the world!',
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg',
-    address: '20 W 34th St, New York, NY 10001',
-    location: {
-      lat: 40.7484405,
-      lng: -73.9878584
-    },
-    creator: 'u2'
-  }
-];
+    {
+      id: 'p2',
+      title: 'University of Regina(UofR)',
+      description: 'My Canadian University',
+      imageUrl: 'https://uarctic.vps02.fwstatic.download/media/1261920/uregina-profile-11.jpg?anchor=center&mode=crop&width=1020&height=638&slimmage=true&bgcolor=fff&format=jpg&rnd=130873106210000000',
+      address: '3737 Wascana Pkwy, Regina, SK S4S 0A2',
+      location: {
+        lat: 50.4154576,
+        lng: -104.5900189
+      },
+      creator: 'u2'
+    }
+  ];
 
 // fetching data locally
 const UpdatePlace = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const placeId = useParams().placeId;
+
+  const [formState, inputHandler, setFormData] = useForm(
+    {
+      title: {
+        value: '',
+        isValid: false
+      },
+      description: {
+        value: '',
+        isValid: false
+      }
+    },
+    false
+  );
 
   const identifiedPlace = DUMMY_PLACES.find(p => p.id === placeId);
 
-  // re-construct form hanlder in form-hook.js.
-  const [formSate, inputHandler] = useForm({
-    title: {
-      value: identifiedPlace.title,
-      isValid: true
-    },
-    description: {
-      value: identifiedPlace.description,
-      isValid: true
-    },
-  }, true
-);
+  useEffect(() => {
+    if (identifiedPlace) {
+      setFormData(
+        {
+          title: {
+            value: identifiedPlace.title,
+            isValid: true
+          },
+          description: {
+            value: identifiedPlace.description,
+            isValid: true
+          }
+        },
+        true
+      );
+    }
+    setIsLoading(false);
+  }, [setFormData, identifiedPlace]);
 
-// prevent reload when update the form.
-const placeUpdateSubmitHandler = event => {
+  const placeUpdateSubmitHandler = event => {
     event.preventDefault();
-    console.log(formSate.inputs);
-}
+    console.log(formState.inputs);
+  };
 
-if (!identifiedPlace) {
+  if (!identifiedPlace) {
     return (
       <div className="center">
-        <h2>Could not find place!</h2>
+        <Card>
+          <h2>Could not find place!</h2>
+        </Card>
       </div>
     );
   }
 
-  // if title value does not change, validation is true and button is disable.
+  if (isLoading) {
+    return (
+      <div className="center">
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
+
   return (
     <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
       <Input
@@ -83,8 +111,8 @@ if (!identifiedPlace) {
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid title."
         onInput={inputHandler}
-        initialValue={formSate.inputs.title.value}
-        initialValid={formSate.inputs.title.isValid}
+        initialValue={formState.inputs.title.value}
+        initialValid={formState.inputs.title.isValid}
       />
       <Input
         id="description"
@@ -93,10 +121,10 @@ if (!identifiedPlace) {
         validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="Please enter a valid description (min. 5 characters)."
         onInput={inputHandler}
-        initialValue={formSate.inputs.description.value}
-        initialValid={formSate.inputs.description.isValid}
+        initialValue={formState.inputs.description.value}
+        initialValid={formState.inputs.description.isValid}
       />
-      <Button type="submit" disabled={!formSate.isValid}>
+      <Button type="submit" disabled={!formState.isValid}>
         UPDATE PLACE
       </Button>
     </form>

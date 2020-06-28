@@ -22,7 +22,7 @@ const DUMMY_PLACES = [
   },
   {
     id: 'p2',
-    title: 'University of Regina',
+    title: 'University of Regina(UofR)',
     description: 'My Canadian University',
     imageUrl: 'https://uarctic.vps02.fwstatic.download/media/1261920/uregina-profile-11.jpg?anchor=center&mode=crop&width=1020&height=638&slimmage=true&bgcolor=fff&format=jpg&rnd=130873106210000000',
     address: '3737 Wascana Pkwy, Regina, SK S4S 0A2',

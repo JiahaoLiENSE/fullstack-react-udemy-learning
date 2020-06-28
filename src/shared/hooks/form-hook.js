@@ -2,6 +2,8 @@ import { useCallback, useReducer } from 'react';
 
 /* 
     custom form hooks re-use template
+    The Complete Guide" course or in the official docs: https://reactjs.org/docs/hooks-intro.html
+    you can build your own React hooks (https://reactjs.org/docs/hooks-custom.html).
  */
 
  /*
@@ -28,6 +30,11 @@ const formReducer = (state, action) => {
           },
           isValid: formIsValid
         };
+        case 'SET_DATA':
+          return {
+            inputs: action.inputs,
+            isValid: action.formIsValid
+          }
       default:
         return state;
     }
@@ -56,5 +63,14 @@ export const useForm = (initialInputs, initialFormValidity) => {
         });
     }, []);
     
-    return [formState, inputHandler];
+    // none dependencies, not re-created function when call back.
+    const setFormData = useCallback((inputData, formValidity) => {
+      dispatch({
+        type: 'SET_DATA',
+        inputs: inputData,
+        formIsValid: formValidity
+      });
+    }, []);
+
+    return [formState, inputHandler, setFormData];
 };
