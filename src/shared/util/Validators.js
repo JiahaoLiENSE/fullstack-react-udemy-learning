@@ -3,6 +3,7 @@
  */
 
  // define identifiers.
+ //
 const VALIDATOR_TYPE_REQUIRE = 'REQUIRE';
 const VALIDATOR_TYPE_MINLENGTH = 'MINLENGTH';
 const VALIDATOR_TYPE_MAXLENGTH = 'MAXLENGTH';
