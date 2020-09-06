@@ -8,6 +8,7 @@ import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
 import UserPlaces from './places/pages/UserPlaces';
 import UpdatePlace from '../src/places/pages/UpdatePlace';
+import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 // read all router dom url contents set up: npm install --save react-router-dom
 
@@ -31,6 +32,9 @@ const App = () => {
           </Route>
           <Route path="/places/:placeId" exact>
             <UpdatePlace />
+          </Route>
+          <Route path="/auth">
+            <Auth />
           </Route>
           {/* If the route path is not '/', then redirect to '/' */}
           <Redirect to="/"></Redirect>
