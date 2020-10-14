@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## REACT APP DEMO
+
+[heroku hosting](https://react-learn-app.herokuapp.com/)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -37,31 +41,40 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Libraries
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+ express.js:  
+`npm install express`  
+body-parser express middleware => Parse incoming request bodies in a middleware before your handlers, available under the req.body property:  
+`npm install body-parser`  
+mongoose database package:  
+`npm install mongoose`  
+axios => Axios Component for React with child function callback. This is intended to allow in render async requests:  
+`npm install react-axios`  
+uuid => To create a random UUID  
+`npm install uuid`  
+bcrypt => A library to help you hash passwords:  
+`npm install bcrypt`  
+jwt => Create json web token:  
+`npm install jsonwebtoken`  
+multer => Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files:  
+`npm install --save multer`  
+unqiueValidator => mongoose-unique-validator is a plugin which adds pre-save validation for unique fields within a Mongoose schema:  
+`npm install --save mongoose-unique-validator`  
+Google Geocoding API => request and response latitude and longitude info.  
+nodemon => nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.  
+`npm install --save-dev nodemon`  
+serve => Deployment localhost test serve package after `npm run build`:  
+`npm install -g serve`  
 
 ### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Splitted deployment option:  
+[firebase hosting](https://firebase.google.com/docs/hosting/quickstart) => frontend side  
+[heroku](https://devcenter.heroku.com/articles/git) => backend side  
+
+Combined app deployment option:  
+heroku
 
 ### `npm run build` fails to minify
 
