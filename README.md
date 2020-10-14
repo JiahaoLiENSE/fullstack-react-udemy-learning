@@ -45,25 +45,35 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
  express.js:  
 `npm install express`  
+
 body-parser express middleware => Parse incoming request bodies in a middleware before your handlers, available under the req.body property:  
 `npm install body-parser`  
+
 mongoose database package:  
 `npm install mongoose`  
+
 axios => Axios Component for React with child function callback. This is intended to allow in render async requests:  
 `npm install react-axios`  
+
 uuid => To create a random UUID  
 `npm install uuid`  
+
 bcrypt => A library to help you hash passwords:  
 `npm install bcrypt`  
+
 jwt => Create json web token:  
 `npm install jsonwebtoken`  
+
 multer => Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files:  
 `npm install --save multer`  
+
 unqiueValidator => mongoose-unique-validator is a plugin which adds pre-save validation for unique fields within a Mongoose schema:  
 `npm install --save mongoose-unique-validator`  
+
 Google Geocoding API => request and response latitude and longitude info.  
 nodemon => nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.  
 `npm install --save-dev nodemon`  
+
 serve => Deployment localhost test serve package after `npm run build`:  
 `npm install -g serve`  
 
