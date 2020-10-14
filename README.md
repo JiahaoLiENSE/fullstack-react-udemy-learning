@@ -71,6 +71,7 @@ unqiueValidator => mongoose-unique-validator is a plugin which adds pre-save val
 `npm install --save mongoose-unique-validator`  
 
 Google Geocoding API => request and response latitude and longitude info.  
+
 nodemon => nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.  
 `npm install --save-dev nodemon`  
 
